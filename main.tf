@@ -51,3 +51,7 @@ resource "aws_instance" "auth_server" {
     ManagedBy = "Terraform"
   }
 }
+
+output "app_server_ids" {
+  value = module.app_servers.instance_ids
+}
