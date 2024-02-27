@@ -26,3 +26,8 @@ variable "health_check" {
   description = "Destination and protocol for the health check request"
   default     = { path = "/health-check", protocol = "HTTP" }
 }
+
+variable "instance_ids" {
+  type        = list(string)
+  description = "List of IDs of the instances"
+}

@@ -63,4 +63,6 @@ module "load_balancer" {
   port           = 3000
   protocol       = "HTTP"
   vpc_id         = module.networking.vpc_id
+
+  instance_ids = module.app_servers.instance_ids
 }
