@@ -46,3 +46,18 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
   ip_protocol = "tcp"
   to_port     = 22
 }
+
+resource "aws_security_group" "allow_internal_ssh" {
+  name        = "allow__internal_ssh"
+  description = "Allow internal SSH traffic "
+  vpc_id      = var.vpc_id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_internal_ssh_ipv4" {
+  security_group_id = aws_security_group.allow_internal_ssh.id
+
+  cidr_ipv4   = "10.0.0.0/20"
+  from_port   = 22
+  ip_protocol = "tcp"
+  to_port     = 22
+}
