@@ -31,3 +31,13 @@ variable "instance_ids" {
   type        = list(string)
   description = "List of IDs of the instances"
 }
+
+variable "security_groups" {
+  type        = list(string)
+  description = "List of security group IDs to assign to the LB"
+}
+
+variable "subnets" {
+  type        = list(string)
+  description = "List of subnet IDs to attach to the LB"
+}

@@ -22,3 +22,12 @@ resource "aws_lb_target_group_attachment" "lb_group_attach" {
   target_id        = var.instance_ids[count.index]
   port             = var.port
 }
+
+resource "aws_lb" "lb" {
+  security_groups    = var.security_groups
+  subnets            = var.subnets
+
+  tags = {
+    ManagedBy = "Terraform"
+  }
+}

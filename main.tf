@@ -65,4 +65,6 @@ module "load_balancer" {
   vpc_id         = module.networking.vpc_id
 
   instance_ids = module.app_servers.instance_ids
+  security_groups = [module.security.http_group_id, module.security.internal_ssh_group_id]
+  subnets                = module.networking.public_subnets
 }
