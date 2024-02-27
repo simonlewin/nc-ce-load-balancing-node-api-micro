@@ -59,7 +59,7 @@ output "app_server_ids" {
 module "load_balancer" {
   source = "./modules/load_balancing"
 
-  lb_target_grps = ["heating", "lighting", "status"]
+  lb_target_grps = ["heating", "lights", "status"]
   port           = 3000
   protocol       = "HTTP"
   vpc_id         = module.networking.vpc_id
