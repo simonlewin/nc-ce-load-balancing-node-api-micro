@@ -17,3 +17,8 @@ variable "public_subnets" {
   type        = list(string)
   description = "The list of IPv4 CIDR blocks for the public subnets"
 }
+
+variable "private_subnets" {
+  type        = list(string)
+  description = "The list of IPv4 CIDR blocks for the private subnets"
+}
