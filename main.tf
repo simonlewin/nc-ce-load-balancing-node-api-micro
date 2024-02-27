@@ -38,3 +38,16 @@ module "app_servers" {
   vpc_security_group_ids = [module.security.http_group_id, module.security.ssh_group_id]
   subnets                = module.networking.public_subnets
 }
+
+resource "aws_instance" "auth_server" {
+  ami                    = "ami-0e5f882be1900e43b"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [module.security.http_group_id, module.security.ssh_group_id]
+  key_name               = "nc-photo-display-app"
+  subnet_id              = module.networking.private_subnets[0]
+
+  tags = {
+    Name      = "auth-server"
+    ManagedBy = "Terraform"
+  }
+}
