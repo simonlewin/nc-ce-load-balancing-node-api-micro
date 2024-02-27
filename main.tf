@@ -16,3 +16,9 @@ output "public_subnets" {
 output "private_subnets" {
   value = module.networking.private_subnets
 }
+
+module "security" {
+  source = "./modules/security"
+
+  vpc_id = module.networking.vpc_id
+}
