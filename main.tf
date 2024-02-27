@@ -22,3 +22,19 @@ module "security" {
 
   vpc_id = module.networking.vpc_id
 }
+
+output "http" {
+  value = module.security.http_group_id
+}
+
+output "ssh" {
+  value = module.security.ssh_group_id
+}
+
+module "app_servers" {
+  source = "./modules/app_servers"
+
+  servers = ["heating", "lighting", "status"]
+  vpc_security_group_ids = [module.security.http_group_id, module.security.ssh_group_id]
+  subnets            = module.networking.public_subnets
+}
