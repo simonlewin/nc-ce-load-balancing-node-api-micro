@@ -28,4 +28,5 @@ variable "ami" {
 
 variable "subnets" {
   type = list(string)
+  description = " VPC Subnet ID to launch in"
 }

@@ -34,7 +34,7 @@ output "ssh" {
 module "app_servers" {
   source = "./modules/app_servers"
 
-  servers = ["heating", "lighting", "status"]
+  servers                = ["heating", "lighting", "status"]
   vpc_security_group_ids = [module.security.http_group_id, module.security.ssh_group_id]
-  subnets            = module.networking.public_subnets
+  subnets                = module.networking.public_subnets
 }
