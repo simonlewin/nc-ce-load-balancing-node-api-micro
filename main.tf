@@ -55,3 +55,12 @@ resource "aws_instance" "auth_server" {
 output "app_server_ids" {
   value = module.app_servers.instance_ids
 }
+
+module "load_balancer" {
+  source = "./modules/load_balancing"
+
+  lb_target_grps = ["heating", "lighting", "status"]
+  port           = 3000
+  protocol       = "HTTP"
+  vpc_id         = module.networking.vpc_id
+}
